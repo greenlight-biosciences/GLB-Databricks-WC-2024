@@ -29,7 +29,7 @@ if "visibility" not in st.session_state:
     st.session_state.visibility = "visible"
     st.session_state.disabled = False
 
-st.title("🧱 Chatbot App")
+st.title("GreenLight Databricks PoC")
 st.write(f"A basic chatbot using the your own serving endpoint")
 
 # Initialize chat history
