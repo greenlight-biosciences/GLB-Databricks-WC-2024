@@ -37,9 +37,14 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
+for i in range(len(st.session_state.messages)+1):
+    if i < len(st.session_state.messages):
+        message = st.session_state.messages[i]
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+    else:
+        with st.chat_message("U"):
+            st.file_uploader("Choose an image...", type=["png"], label_visibility=st.session_state.visibility)
 
 # Accept user input
 if prompt := st.chat_input("What is up?"):
