@@ -22,7 +22,7 @@ def push_data(filters, task):
         embedding=embeddings,
         text_column="text",
     )
-    document_1 = Document(page_content=task, metadata={"filters": filters})
+    document_1 = Document(page_content=task, metadata={"filters": str(filters)})
 
     documents = [document_1]
 
