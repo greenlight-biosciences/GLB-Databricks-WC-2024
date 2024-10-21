@@ -53,7 +53,7 @@ def push_data(filters, task):
 #     return assistant_response
 # push_data("testing", "tasktest")
 
-def dbrx_vs():
+def dbrx_vs(search_value):
     endpoint_name = "vector-search-glb-endpoint"
     index_name = "workspace.default.glb_index_direct"
     embeddings = DatabricksEmbeddings(endpoint="databricks-bge-large-en")
@@ -62,9 +62,13 @@ def dbrx_vs():
         index_name=index_name,
         embedding=embeddings,
         text_column="text",
+        columns=['id', 'text', 'filters']
     )
-    results = vector_store.similarity_search(
-    query="thud", k=1, filter={"filters": "https://example.com"}
-    )
-    for doc in results:
-        logger.info(f"* {doc.page_content} [{doc.metadata}]")
+    retriever = vector_store.as_retriever(search_type="similarity_score_threshold", search_kwargs={"k": 5, 'score_threshold': 0.5})
+    results = retriever.invoke(search_value)
+    similar_filters = ""
+    if results:
+        similar_filters = "These are filters developed for similar tasks previously, use these as examples:"
+        for doc in results:
+            similar_filters = similar_filters + f"\nUser's Query '{doc.page_content}' Corresponding filter {doc.metadata['filters']}"
+    return similar_filters
