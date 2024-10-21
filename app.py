@@ -11,7 +11,7 @@ from helper import push_data, dbrx_vs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 st.set_page_config(page_title="AdaptiveFilters", layout="wide")
-os.environ['DATABRICKS_HOST'] = "https://dbc-8814f776-f435.cloud.databricks.com"
+os.environ['DATABRICKS_HOST'] = os.getenv("DATABRICKS_HOST_PROXY")
 
 # Streamlit app
 if "visibility" not in st.session_state:
@@ -28,6 +28,7 @@ if "messages" not in st.session_state:
     st.session_state.current_image = None
     st.session_state.lg_msg = []
     st.session_state.db_msg = []
+    st.session_state.latest_prompt = ""
 
 if new_img := st.sidebar.file_uploader("Choose an image...", type=["png"], label_visibility=st.session_state.visibility):
     st.session_state.original_image = base64.b64encode(new_img.read()).decode("utf-8")
@@ -41,7 +42,7 @@ chat_area, finetune = st.columns([4,1])
 
 # Accept user input
 if prompt := st.chat_input("How can I process your image?", disabled=(st.session_state.current_image is None)):
-    
+    st.session_state.latest_prompt = prompt
     st.session_state.db_msg.append(ChatMessage(role=ChatMessageRole.USER, content=prompt))
     input_message = HumanMessage(content=prompt)
     st.session_state.messages.append(input_message)
@@ -119,4 +120,4 @@ for i in range(len(st.session_state.messages)):
                 changed_img = agent._apply_filters(st.session_state.current_image, filters)
                 rsn.image(f'data:image/png;base64,{changed_img}', caption='Updated Image')
                 if st.button("Store this pipeline!", use_container_width=True, key=str(uuid.uuid4())):
-                    push_data(filters, planner_reason)
+                    push_data(filters, st.session_state.latest_prompt)
