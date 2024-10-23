@@ -45,11 +45,11 @@ class CannyEdge(BaseModel):
 image_tools = {
     'blur': gaussian_blur,
     'hsv': hsv_threshold,
-    # 'canny': canny_edge
+    'canny': canny_edge
 }
 
 class Filters(BaseModel):
     """Filters Json"""
-    filters: List[Union[HSVThreshold, GaussianBlur]] = Field(description="List of filters available to apply")
+    filters: List[Union[HSVThreshold, GaussianBlur, CannyEdge]] = Field(description="List of filters available to apply")
     planner_reason: str = Field(description="Provide a human readable formatted concise definition of each filter used, and explain what each parameter for each filter does when increased or decreased. Present this information in bullet points. Additionally, recommend which parameters I should tweak, and explain the expected effects of those changes. Briefly explain the rationale behind the sequence of filters.")
 parser = JsonOutputParser(pydantic_object=Filters)
