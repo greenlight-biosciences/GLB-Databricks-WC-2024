@@ -22,7 +22,7 @@ To address these challenges, we propose the AdaptiveFilters: Image Processing Ag
 | - Promotes the development of explainable AI applications.                                             | - AdaptiveFilters can act as a foundation for developing formal image processing pipelines.            |
 
 ## System Architecture
-![sys_arch](image.png)
+![sys_arch](media/sys_arch.png)
 
 
 

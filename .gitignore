@@ -2,6 +2,7 @@ __pycache__
 .venv
 .env
 *.png
+!media/sys_arch.png
 misc
 images
 app.yaml
