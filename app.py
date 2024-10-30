@@ -120,7 +120,7 @@ for i in range(len(st.session_state.messages)):
                 """, 
                 unsafe_allow_html=True
             )
-            if i == len(st.session_state.messages)-1:
+            if i == len(st.session_state.messages)-1 and 'filters' in msg.content[2]['data']:
                 ftr, rsn = st.columns(2)
                 filters = msg.content[2]['data']['filters']
                 planner_reason = msg.content[2]['data']['planner_reason']
@@ -165,7 +165,7 @@ for i in range(len(st.session_state.messages)):
 
                 # Display updated filters
                 rsn.write(planner_reason)
-                changed_img = agent._apply_filters(st.session_state.prev_image, filters)
+                changed_img = agent._apply_filters(st.session_state.original_image, filters)
                 rsn.image(f'data:image/png;base64,{changed_img}', caption='Updated Image')
 
                 if st.button("Store this pipeline!", use_container_width=True, key=f"store_pipeline-{i}"):

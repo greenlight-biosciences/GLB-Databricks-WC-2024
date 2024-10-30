@@ -15,7 +15,7 @@ def hsv_threshold(img, lower_hsv:tuple=(0, 0, 0), upper_hsv:tuple=(180, 255, 255
     result = cv2.bitwise_and(img, img, mask=mask)
     return result
 
-def canny_edge(img, t_lower:float, t_upper:float):
+def canny_edge(img, t_lower:int, t_upper:int):
     edge_img = cv2.Canny(img, t_lower, t_upper)
     return edge_img
 

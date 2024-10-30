@@ -30,31 +30,6 @@ def push_data(filters, task):
 
     vector_store.add_documents(documents=documents, ids=[str(uuid.uuid4())])
 
-# def get_user_info():
-#     headers = st.context.headers
-#     return dict(
-#         user_name=headers.get("X-Forwarded-Preferred-Username"),
-#         user_email=headers.get("X-Forwarded-Email"),
-#         user_id=headers.get("X-Forwarded-User"),
-#     )
-
-# user_info = get_user_info()
-# Initialize the Databricks Workspace Client
-# w = WorkspaceClient()
-
-# Ensure environment variable is set correctly
-# assert os.getenv('SERVING_ENDPOINT'), "SERVING_ENDPOINT must be set in app.yaml."
-# Display assistant response in chat message container
-# def query_serving_endpoint(messages):
-#     response = w.serving_endpoints.query(
-#         name=os.getenv("SERVING_ENDPOINT"),
-#         messages=messages,
-#         prompt="Summarize these messages"
-#     )
-#     assistant_response = response.choices.message.content
-#     return assistant_response
-# push_data("testing", "tasktest")
-
 def dbrx_vs(search_value):
     endpoint_name = "vector-search-glb-endpoint"
     index_name = "workspace.default.glb_index_direct"
