@@ -42,6 +42,14 @@ if new_img := st.sidebar.file_uploader("Choose an image...", type=["png"], label
 if st.session_state.original_image is not None:
     st.sidebar.image(f'data:image/png;base64,{st.session_state.original_image}', caption='Original Image')
 
+st.sidebar.divider()
+st.sidebar.link_button("Example 1 Image", url="https://github.com/danforthcenter/plantcv-tutorial-input-output/blob/main/img/rgb_img.png", use_container_width=True)
+st.sidebar.info("Prompt: Can you isolate the green plant?")
+
+st.sidebar.divider()
+st.sidebar.link_button("Example 2 Image", url="https://github.com/danforthcenter/plantcv-tutorial-v4-VIS-single-plant/blob/main/imgs/1_B73_sand_C_2023-04-14_10%3A19%3A07.jpg", use_container_width=True)
+st.sidebar.info("Prompt: Can you find the edges of the green plant?")
+
 chat_area, finetune = st.columns([4,1])
 
 # Accept user input
