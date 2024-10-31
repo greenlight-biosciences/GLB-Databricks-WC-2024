@@ -43,6 +43,9 @@ if st.session_state.original_image is not None:
     st.sidebar.image(f'data:image/png;base64,{st.session_state.original_image}', caption='Original Image')
 
 st.sidebar.divider()
+st.sidebar.warning("Note: AdaptiveFilters is a proof-of-concept application and currently supports only HSV Thresholding, Gaussian Blur, and Canny Edge Detection filters.")
+
+st.sidebar.divider()
 st.sidebar.link_button("Example 1 Image", url="https://github.com/danforthcenter/plantcv-tutorial-input-output/blob/main/img/rgb_img.png", use_container_width=True)
 st.sidebar.info("Prompt: Can you isolate the green plant?")
 
