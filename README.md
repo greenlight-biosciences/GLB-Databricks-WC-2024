@@ -23,7 +23,7 @@ To address these challenges, we propose the AdaptiveFilters: Image Processing Ag
 
 ## AdaptiveFilters Demonstration
 
-[Watch a quick demo of AdaptiveFilters in action.](https://youtu.be/xHjRYeBP7TM?si=v4jfh6md2zKQ6e71)
+[Watch a quick demo of AdaptiveFilters in action.](https://youtu.be/Fx4fqun9lQo?si=aYF-4L3FwF2ZJjwn)
 
 ## System Architecture
 ![sys_arch](media/sys_arch.png)
