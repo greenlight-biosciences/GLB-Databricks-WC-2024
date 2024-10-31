@@ -21,12 +21,15 @@ To address these challenges, we propose the AdaptiveFilters: Image Processing Ag
 | - Provides filter rationale and parameter optimization guidance.                                        | - Serves as a platform for deploying proprietary filters to end users.                                 |
 | - Promotes the development of explainable AI applications.                                             | - AdaptiveFilters can act as a foundation for developing formal image processing pipelines.            |
 
+## AdaptiveFilters Demonstration
+
+[Watch a quick demo of AdaptiveFilters in action.](https://youtu.be/xHjRYeBP7TM?si=v4jfh6md2zKQ6e71)
+
 ## System Architecture
 ![sys_arch](media/sys_arch.png)
-
-
 
 ## References
 **[1]** <a id="reference-1"></a>[Nchu, F. (2024). Sustainable biological control of pests: The way forward. Applied Sciences, 14(7), 2669](https://doi.org/10.3390/app14072669)
 
 **[2]** <a id="reference-2"></a>[Góngora CE, Silva MdC. Sustainable Strategies for the Control of Crop Diseases and Pests to Reduce Pesticides. Agronomy. 2024; 14(9):2158](https://doi.org/10.3390/agronomy14092158)
+
